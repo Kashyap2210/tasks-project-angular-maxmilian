@@ -1,18 +1,25 @@
-<div>
+<!-- <div>
   <button type="button" (click)="onSelectUser()">
-    <!-- <img [src]="imagePath" [alt]="selectedUser.name" /> -->
-    <!-- Since the value is now stored in the signal we need to call it like a function -->
-    <!-- when its called like a function then it activates the read method on that signal -->
-    <!-- So whenever the signal value changes then the UI is updated accordingly -->
+     <img [src]="imagePath" [alt]="selectedUser.name" /> -->
+<!-- Since the value is now stored in the signal we need to call it like a function -->
+<!-- when its called like a function then it activates the read method on that signal -->
+<!-- So whenever the signal value changes then the UI is updated accordingly -->
 
-    <!-- <img [src]="imagePath" [alt]="selectedUser().name" /> -->
-    <!-- Now we are using computed to compute a value from the signal -->
-    <!-- So when we use a computed method what angular does is that it sets up a subscription -->
-    <!-- Subscription listens to the signal that has been changing and automatically updates the necessary values -->
-    <!-- So whenever the signal recieves new value angular will recompute the value of imagePath, i.e. one of the signals changes -->
-    <!-- Underneath, computed also generates a signal to notify the change in the signal -->
-    <img [src]="imagePath()" [alt]="selectedUser().name" />
+<!-- <img [src]="imagePath" [alt]="selectedUser().name" /> -->
+<!-- Now we are using computed to compute a value from the signal -->
+<!-- So when we use a computed method what angular does is that it sets up a subscription -->
+<!-- Subscription listens to the signal that has been changing and automatically updates the necessary values -->
+<!-- So whenever the signal recieves new value angular will recompute the value of imagePath, i.e. one of the signals changes -->
+<!-- Underneath, computed also generates a signal to notify the change in the signal -->
+<!-- <img [src]="imagePath()" [alt]="selectedUser().name" /> -->
 
-    <span>{{ getSelectedUser().name }}</span>
+<!-- <span>{{ getSelectedUser().name }}</span>
+  </button>
+</div> -->
+
+<div>
+  <button (click)="onSelectUser()">
+    <img [src]="imagePath()" alt="name" />
+    <span>{{ user().name }}</span>
   </button>
 </div>

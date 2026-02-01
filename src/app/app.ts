@@ -1,4 +1,5 @@
 import { Component, signal } from '@angular/core';
+import { DUMMY_USERS } from '../data/dummy-users';
 import { Header } from './header/header';
 import { User } from './user/user';
 
@@ -10,4 +11,6 @@ import { User } from './user/user';
 })
 export class App {
   protected readonly title = signal('first-angular-app');
+
+  users = DUMMY_USERS;
 }
