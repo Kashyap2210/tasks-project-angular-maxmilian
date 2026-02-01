@@ -1,4 +1,4 @@
-import { Component, signal } from '@angular/core';
+import { Component, computed, signal } from '@angular/core';
 import { DUMMY_USERS, IDummyUser } from '../../data/dummy-users';
 
 const randomIndex = () => Math.floor(Math.random() * DUMMY_USERS.length);
@@ -16,9 +16,11 @@ export class User {
   // signal is like a container that contains the value of selectedUser
   // so when the value of selectedUser is changed Angular is notified that selectedUser is changed so need to make necessary changes, in places where that value needs to change
 
-  get imagePath() {
-    return this.selectedUser().avatar;
-  }
+  imagePath = computed(() => this.selectedUser().avatar);
+
+  // get imagePath() {
+  //   return this.selectedUser().avatar;
+  // }
 
   getSelectedUser(): IDummyUser {
     return this.selectedUser();
