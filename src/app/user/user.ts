@@ -1,4 +1,4 @@
-import { Component, computed, input } from '@angular/core';
+import { Component, computed, EventEmitter, input, Output } from '@angular/core';
 import { IDummyUser } from '../../data/dummy-users';
 
 // const randomIndex = () => Math.floor(Math.random() * DUMMY_USERS.length);
@@ -68,6 +68,14 @@ export class User {
   // this will only change if the value of the component from
   // where this is sent changes
 
+  // always add type declaration in EventEmitter
+  @Output() select = new EventEmitter<string>();
+
+  // this does not generate a signal
+  // this does generate an outputEmitter
+  // (alias) output<string>(opts?: OutputOptions | undefined): OutputEmitterRef<string>
+  // select = output<string>();
+
   // avatar = input.required<string>();
   // name = input.required<string>();
 
@@ -83,5 +91,7 @@ export class User {
     console.log('Clicked');
     // // this.selectedUser = DUMMY_USERS[randomIndex()];
     // this.selectedUser.set(DUMMY_USERS[randomIndex()]);
+
+    this.select.emit(this.user().id);
   }
 }

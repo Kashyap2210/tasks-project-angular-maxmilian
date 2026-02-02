@@ -2,19 +2,25 @@
 <main>
   <ul id="users">
     <li>
-      <app-user [user]="users[0]" />
+      <!-- "$event" variable is a special variable provided by angular -->
+      <!-- It can be used on custom events, It can also be used on built-in events -->
+      <!-- This event can be used to get hold of potentially emitted values. -->
+      <!-- $event will hold the value that will be emitted -->
+      <app-user [user]="users[0]" (select)="onSelectUser($event)" />
     </li>
     <li>
-      <app-user [user]="users[1]" />
+      <app-user [user]="users[1]" (select)="onSelectUser($event)" />
     </li>
     <li>
-      <app-user [user]="users[2]" />
+      <app-user [user]="users[2]" (select)="onSelectUser($event)" />
     </li>
     <li>
-      <app-user [user]="users[3]" />
+      <app-user [user]="users[3]" (select)="onSelectUser($event)" />
     </li>
     <li>
-      <app-user [user]="users[4]" />
+      <app-user [user]="users[4]" (select)="onSelectUser($event)" />
     </li>
   </ul>
+
+  <!-- Task Of That User -->
 </main>
