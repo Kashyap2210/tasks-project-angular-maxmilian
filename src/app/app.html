@@ -23,4 +23,7 @@
   </ul>
 
   <!-- Task Of That User -->
+  @if (selectedUser()) {
+    <app-tasks [userToDisplay]="selectedUser()!"></app-tasks>
+  }
 </main>
