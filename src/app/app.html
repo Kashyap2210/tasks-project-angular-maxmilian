@@ -1,12 +1,11 @@
 <app-header />
 <main>
   <ul id="users">
-    <li>
-      <!-- "$event" variable is a special variable provided by angular -->
-      <!-- It can be used on custom events, It can also be used on built-in events -->
-      <!-- This event can be used to get hold of potentially emitted values. -->
-      <!-- $event will hold the value that will be emitted -->
-      <app-user [user]="users[0]" (select)="onSelectUser($event)" />
+    <!-- "$event" variable is a special variable provided by angular -->
+    <!-- It can be used on custom events, It can also be used on built-in events -->
+    <!-- This event can be used to get hold of potentially emitted values. -->
+    <!-- $event will hold the value that will be emitted -->
+    <!-- <app-user [user]="users[0]" (select)="onSelectUser($event)" />
     </li>
     <li>
       <app-user [user]="users[1]" (select)="onSelectUser($event)" />
@@ -19,11 +18,26 @@
     </li>
     <li>
       <app-user [user]="users[4]" (select)="onSelectUser($event)" />
-    </li>
+    </li> -->
+    <!-- ---------------------------------------------------- -->
+    @for (user of users; track user.id) {
+      <!-- track keyword keeps track of rendered lists -->
+      <!-- it helps angular keep track of all the list items that are not changed -->
+      <!-- so that it will only newly render the items that are changed -->
+      <!-- track provides a unique identity (user.id) for each item -->
+      <!-- Angular uses it to reuse existing DOM elements -->
+      <!-- it prevents unnecessary destroy & re-create of unchanged- items -->
+      <!-- TRACK TELLS ANGULAR, "THIS ITEM IS THE SAME ONE AS BEFORE, SO DONT DESTROY & RECREATE IT." -->
+      <li>
+        <app-user [user]="user" (select)="onSelectUser($event)" />
+      </li>
+    }
   </ul>
 
   <!-- Task Of That User -->
   @if (selectedUser()) {
-    <app-tasks [userToDisplay]="selectedUser()!"></app-tasks>
+    <app-tasks [userToDisplay]="selectedUser()"></app-tasks>
+  } @else {
+    <p>No Selected User For Now</p>
   }
 </main>

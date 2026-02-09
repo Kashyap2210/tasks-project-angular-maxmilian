@@ -8,5 +8,9 @@ import { IDummyUser } from '../../data/dummy-users';
   styleUrl: './tasks.css',
 })
 export class Tasks {
-  userToDisplay = input.required<IDummyUser>();
+  userToDisplay = input<IDummyUser>();
+
+  get getUserToDisplay() {
+    return this.userToDisplay() ?? ({} as IDummyUser);
+  }
 }
