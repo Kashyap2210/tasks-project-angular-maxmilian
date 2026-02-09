@@ -60,4 +60,8 @@ export class Tasks {
     console.log('this.userToDisplay()!.id', this.userToDisplay()!.id);
     return this.tasks.filter((task) => task.userId === this.userToDisplay()!.id);
   }
+
+  onCompleteTask(id: string) {
+    this.tasks = this.tasks.filter((task) => task.id !== id);
+  }
 }
