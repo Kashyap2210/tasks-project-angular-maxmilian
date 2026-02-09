@@ -1,5 +1,18 @@
-<div>
-  <h1>
-    {{ getUserToDisplay.name }}
-  </h1>
-</div>
+<section id="tasks">
+  <header>
+    <h1>
+      {{ getUserToDisplay.name }}
+    </h1>
+    <menu>
+      <button>Add Tasks</button>
+    </menu>
+  </header>
+
+  <ul>
+    @for (task of selectedUserTasks; track task.id) {
+      <li>
+        <app-task [task]="task"></app-task>
+      </li>
+    }
+  </ul>
+</section>
