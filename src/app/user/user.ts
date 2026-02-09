@@ -1,4 +1,4 @@
-import { Component, computed, EventEmitter, input, Output } from '@angular/core';
+import { Component, computed, EventEmitter, Input, input, Output } from '@angular/core';
 import { IDummyUser } from './user.model';
 
 // const randomIndex = () => Math.floor(Math.random() * DUMMY_USERS.length);
@@ -86,6 +86,8 @@ export class User {
   // get imagePath() {
   //   return this.user().avatar;
   // }
+
+  @Input({ required: true }) selected!: boolean;
 
   onSelectUser() {
     console.log('Clicked');

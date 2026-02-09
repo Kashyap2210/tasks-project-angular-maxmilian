@@ -29,7 +29,11 @@
       <!-- it prevents unnecessary destroy & re-create of unchanged- items -->
       <!-- TRACK TELLS ANGULAR, "THIS ITEM IS THE SAME ONE AS BEFORE, SO DONT DESTROY & RECREATE IT." -->
       <li>
-        <app-user [user]="user" (select)="onSelectUser($event)" />
+        <app-user
+          [user]="user"
+          (select)="onSelectUser($event)"
+          [selected]="user.id === selectedUserId()"
+        />
       </li>
     }
   </ul>

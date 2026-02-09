@@ -18,7 +18,7 @@
 </div> -->
 
 <div>
-  <button (click)="onSelectUser()">
+  <button [class.active]="selected" (click)="onSelectUser()">
     <img [src]="imagePath()" alt="name" />
     <span>{{ user().name }}</span>
   </button>
