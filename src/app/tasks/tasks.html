@@ -4,9 +4,16 @@
       {{ getUserToDisplay.name }}
     </h1>
     <menu>
-      <button>Add Tasks</button>
+      <button (click)="onClickAddTask()">Add Tasks</button>
     </menu>
   </header>
+
+  @if (isFormOpen) {
+    <h1>User wants to add a new Task</h1>
+    <add-task></add-task>
+    <button class="custom-button" (click)="onClickClose()">Close</button>
+    <button class="custom-button" (click)="onClickClose()">Add Task</button>
+  }
 
   <ul>
     @for (task of selectedUserTasks; track task.id) {
