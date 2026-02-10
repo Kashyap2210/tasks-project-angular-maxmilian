@@ -16,16 +16,12 @@ export class Tasks {
 
   isFormOpen: boolean = false;
 
-  onClickAddTask() {
+  onToggleTaskAddForm() {
     this.isFormOpen = !this.isFormOpen;
     console.log('this.isFormOpen', this.isFormOpen);
   }
 
-  onClickClose() {
-    this.isFormOpen = false;
-    console.log('this.isFormOpen', this.isFormOpen);
-  }
-
+  // onStartAddTask
   onClickAdd(task: ITask) {
     this.tasks.push(task);
   }

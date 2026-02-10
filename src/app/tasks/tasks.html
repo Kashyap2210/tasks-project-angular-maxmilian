@@ -1,19 +1,20 @@
+@if (isFormOpen) {
+  <!-- anything inside the () is an event that we listen to -->
+  <!-- So here we are listening for cancel event -->
+  <!-- As soon as that event is emitted/occurs from the add-task-template -->
+  <!-- we call onToggleTaskAddForm() to close the form -->
+  <add-task (cancel)="onToggleTaskAddForm()"></add-task>
+}
+
 <section id="tasks">
   <header>
     <h1>
       {{ getUserToDisplay.name }}
     </h1>
     <menu>
-      <button (click)="onClickAddTask()">Add Tasks</button>
+      <button (click)="onToggleTaskAddForm()">Add Tasks</button>
     </menu>
   </header>
-
-  @if (isFormOpen) {
-    <h1>User wants to add a new Task</h1>
-    <add-task></add-task>
-    <button class="custom-button" (click)="onClickClose()">Close</button>
-    <button class="custom-button" (click)="onClickClose()">Add Task</button>
-  }
 
   <ul>
     @for (task of selectedUserTasks; track task.id) {
