@@ -4,17 +4,23 @@
   <form>
     <p>
       <label for="title">Title</label>
-      <input type="text" id="title" name="title" />
+      <!-- anything wrapped in [(...)] sets up 2 way binding -->
+      <!-- 2 way binding syntax cannot be used on any property of elements -->
+      <!-- By default no element properties support 2-way binding -->
+      <!-- ngModel helps us to listen to data on any element & also throw some output both with one syntax-->
+      <input type="text" id="title" name="title" [(ngModel)]="enteredTitle" />
     </p>
 
     <p>
       <label for="summary">Summary</label>
-      <textarea id="summary" rows="5" name="summary"></textarea>
+      <textarea id="summary" rows="5" name="summary" [(ngModel)]="enteredSummary"></textarea>
     </p>
 
     <p>
       <label for="due-date">Due Date</label>
-      <input type="date" id="due-date" name="due-date" />
+      <!-- Now even though enteredDate is a signal we dont have to call them as -->
+      <!-- enteredDate() as ngModel will adjust the code internally -->
+      <input type="date" id="due-date" name="due-date" [(ngModel)]="enteredDate" />
     </p>
 
     <p class="actions">
