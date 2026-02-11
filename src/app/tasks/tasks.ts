@@ -3,7 +3,7 @@ import { DUMMY_TASKS } from '../../data/dummy-tasks';
 import { IDummyUser } from '../user/user.model';
 import { AddTask } from './add-task/add-task';
 import { Task } from './task/task';
-import { ITask } from './task/task.model';
+import { ITask, ITaskCreateDto } from './task/task.model';
 
 @Component({
   selector: 'app-tasks',
@@ -22,13 +22,21 @@ export class Tasks {
   }
 
   // onStartAddTask
-  onClickAdd(task: ITask) {
-    this.tasks.push(task);
+  onClickAdd(task: ITaskCreateDto) {
+    console.log('task', task);
+    const newTask: ITask = {
+      id: String(this.tasks.length),
+      title: task.title,
+      summary: task.summary,
+      dueDate: task.dueDate,
+      userId: this.userToDisplay()!.id,
+    };
+    this.tasks = [...this.tasks, newTask];
   }
 
-  tasks: ITask[] = DUMMY_TASKS;
+  tasks: ITask[] = [...DUMMY_TASKS];
 
-  get getUserToDisplay() {
+  get getUserToDisplay(): IDummyUser {
     return this.userToDisplay() ?? ({} as IDummyUser);
   }
 

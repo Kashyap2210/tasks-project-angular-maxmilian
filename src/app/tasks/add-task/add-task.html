@@ -1,7 +1,10 @@
 <div class="backdrop" (click)="onClickCancel()"></div>
 <dialog open>
   <h2>Add Task</h2>
-  <form>
+
+  <!-- ngSubmit is an event provided by the FormsModule -->
+  <!-- This event occurs when a submit type button is pressed -->
+  <form (ngSubmit)="onClickSubmit()">
     <p>
       <label for="title">Title</label>
       <!-- anything wrapped in [(...)] sets up 2 way binding -->
@@ -25,7 +28,17 @@
 
     <p class="actions">
       <button type="button" (click)="onClickCancel()">Cancel</button>
-      <button type="submit">Create</button>
+
+      <!-- Now the way submit works is that -->
+      <!-- when a button with submit type is pressed -->
+      <!-- that will automatically submit the form -->
+      <!-- then browser will try to send request with that form data to the server -->
+      <!-- that served the website -->
+      <!-- Now that is the issue as the sole purpose of out developement server -->
+      <!-- is the render the index.html -->
+      <!-- Now the is the default behaviour for which we use e.preventDefault in React -->
+      <!-- We dont need to use any specific thing here as If we import the "FormsModule" then we dont need to do this internally -->
+      <button type="submit" (click)="onClickCancel()">Create</button>
     </p>
   </form>
 </dialog>

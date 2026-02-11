@@ -3,7 +3,7 @@
   <!-- So here we are listening for cancel event -->
   <!-- As soon as that event is emitted/occurs from the add-task-template -->
   <!-- we call onToggleTaskAddForm() to close the form -->
-  <add-task (cancel)="onToggleTaskAddForm()"></add-task>
+  <add-task (cancel)="onToggleTaskAddForm()" (addTask)="onClickAdd($event)"></add-task>
 }
 
 <section id="tasks">

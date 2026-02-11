@@ -5,3 +5,7 @@ export interface ITask {
   summary: string;
   dueDate: string; // ISO date format (YYYY-MM-DD)
 }
+
+type ITaskCreateDtoExclude = 'id' | 'userId';
+
+export interface ITaskCreateDto extends Omit<ITask, ITaskCreateDtoExclude> {}

@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Output, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { ITaskCreateDto } from '../task/task.model';
 
 @Component({
   selector: 'add-task',
@@ -11,6 +12,7 @@ export class AddTask {
   // since we dont want to send any output
   // we set the type as void
   @Output() cancel = new EventEmitter<void>();
+  @Output() addTask = new EventEmitter<ITaskCreateDto>();
   // enteredTitle = ''; //<-- legacy
   // enteredSummary = ''; //<-- legacy
   // enteredDate = ''; //<-- legacy
@@ -42,5 +44,13 @@ export class AddTask {
   onClickCancel() {
     // emit is used to emit a default event that will notify template for something
     this.cancel.emit();
+  }
+
+  onClickSubmit() {
+    this.addTask.emit({
+      title: this.enteredTitle(),
+      summary: this.enteredSummary(),
+      dueDate: this.enteredDate(),
+    });
   }
 }
