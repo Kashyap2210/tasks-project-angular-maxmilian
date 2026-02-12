@@ -41,11 +41,17 @@ export class Tasks {
   }
 
   get selectedUserTasks() {
-    console.log('this.userToDisplay()!.id', this.userToDisplay()!.id);
+    // console.log('this.userToDisplay()!.id :', this.userToDisplay()!.id);
     return this.tasks.filter((task) => task.userId === this.userToDisplay()!.id);
   }
 
   onCompleteTask(id: string) {
+    console.log(1);
     this.tasks = this.tasks.filter((task) => task.id !== id);
+  }
+
+  onDeleteTask(id: string) {
+    console.log(2);
+    console.log(`Task with id: ${id}, is deleted.`);
   }
 }
