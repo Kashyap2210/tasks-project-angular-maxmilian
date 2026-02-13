@@ -17,9 +17,14 @@
   </button>
 </div> -->
 
-<div>
+<app-card>
+  <!-- When we use our custom component to wrap around something -->
+  <!-- Then by default it doesnt use our markup provided by the component -->
+  <!-- In which its used, but actually uses its own markup that is provided -->
+  <!-- To solve that issue refer the notes further provided in the card.html -->
+
   <button [class.active]="selected" (click)="onSelectUser()">
     <img [src]="imagePath()" alt="name" />
     <span>{{ user().name }}</span>
   </button>
-</div>
+</app-card>

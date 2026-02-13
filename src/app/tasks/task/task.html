@@ -1,11 +1,13 @@
-<article>
-  <h2>{{ task.title }}</h2>
-  <time> {{ task.dueDate }} </time>
-  <p>{{ task.summary }}</p>
-  <div class="actions">
-    <button (click)="onClickDelete()" style="background-color: brown; margin-right: 1rem">
-      Delete
-    </button>
-    <button (click)="onClickComplete()">Complete</button>
-  </div>
-</article>
+<app-card>
+  <article>
+    <h2>{{ task.title }}</h2>
+    <time> {{ task.dueDate }} </time>
+    <p>{{ task.summary }}</p>
+    <div class="actions">
+      <button (click)="onClickDelete()" style="background-color: brown; margin-right: 1rem">
+        Delete
+      </button>
+      <button (click)="onClickComplete()">Complete</button>
+    </div>
+  </article>
+</app-card>
