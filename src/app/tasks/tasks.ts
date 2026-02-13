@@ -25,13 +25,14 @@ export class Tasks {
   onClickAdd(task: ITaskCreateDto) {
     console.log('task', task);
     const newTask: ITask = {
-      id: String(this.tasks.length),
+      id: `t${String(this.tasks.length + 1)}`,
       title: task.title,
       summary: task.summary,
       dueDate: task.dueDate,
       userId: this.userToDisplay()!.id,
     };
     this.tasks = [...this.tasks, newTask];
+    console.log('tasks', this.tasks);
   }
 
   tasks: ITask[] = [...DUMMY_TASKS];
@@ -46,12 +47,12 @@ export class Tasks {
   }
 
   onCompleteTask(id: string) {
-    console.log(1);
+    // console.log(1);
     this.tasks = this.tasks.filter((task) => task.id !== id);
   }
 
   onDeleteTask(id: string) {
-    console.log(2);
+    // console.log(2);
     console.log(`Task with id: ${id}, is deleted.`);
   }
 }
