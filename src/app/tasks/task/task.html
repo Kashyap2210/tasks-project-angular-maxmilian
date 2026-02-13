@@ -1,6 +1,11 @@
 <app-card>
   <article>
     <h2>{{ task.title }}</h2>
+    <!-- Pipes are output transformers -->
+    <!-- Pipes are used to transform data from 1 shape to other -->
+    <!-- Check below example for date -->
+    <!-- You can also pass options to pipe, check web docs -->
+    <time> {{ task.dueDate | date: 'fullDate' }} </time><br />
     <time> {{ task.dueDate }} </time>
     <p>{{ task.summary }}</p>
     <div class="actions">
