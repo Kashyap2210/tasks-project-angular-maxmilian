@@ -4,7 +4,16 @@ import { ITask, ITaskCreateDto } from './task/task.model';
 
 @Injectable({ providedIn: 'root' })
 export class TasksService {
-  private tasks: ITask[] = [...DUMMY_TASKS];
+  private tasks: ITask[];
+  constructor() {
+    const tasks = localStorage.getItem('tasks');
+
+    if (tasks) {
+      this.tasks = JSON.parse(tasks);
+    } else {
+      this.tasks = [...DUMMY_TASKS];
+    }
+  }
 
   getUserTasks(userId: string) {
     return this.tasks.filter((task) => task.userId === userId);
@@ -21,9 +30,15 @@ export class TasksService {
     };
     this.tasks = [...this.tasks, newTask];
     console.log('tasks', this.tasks);
+    this.saveTasksToLocalStorage();
   }
 
   deleteTask(id: string) {
     this.tasks = this.tasks.filter((task) => task.id !== id);
+    this.saveTasksToLocalStorage();
+  }
+
+  private saveTasksToLocalStorage() {
+    localStorage.setItem('tasks', JSON.stringify(this.tasks));
   }
 }
