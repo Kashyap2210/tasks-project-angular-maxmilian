@@ -1,6 +1,6 @@
-import { Component, EventEmitter, Output, signal } from '@angular/core';
+import { Component, EventEmitter, inject, Input, Output, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { ITaskCreateDto } from '../task/task.model';
+import { TasksService } from '../tasks.service';
 
 @Component({
   selector: 'add-task',
@@ -9,10 +9,14 @@ import { ITaskCreateDto } from '../task/task.model';
   styleUrl: './add-task.css',
 })
 export class AddTask {
+  // now we will inject the TasksService directly in it
+  private taskService = inject(TasksService);
+  @Input({ required: true }) userId!: string;
+
   // since we dont want to send any output
   // we set the type as void
-  @Output() cancel = new EventEmitter<void>();
-  @Output() addTask = new EventEmitter<ITaskCreateDto>();
+  @Output() close = new EventEmitter<void>();
+  // @Output() addTask = new EventEmitter<ITaskCreateDto>();
   // enteredTitle = ''; //<-- legacy
   // enteredSummary = ''; //<-- legacy
   // enteredDate = ''; //<-- legacy
@@ -43,14 +47,28 @@ export class AddTask {
 
   onClickCancel() {
     // emit is used to emit a default event that will notify template for something
-    this.cancel.emit();
+    this.close.emit();
   }
 
   onClickSubmit() {
-    this.addTask.emit({
-      title: this.enteredTitle(),
-      summary: this.enteredSummary(),
-      dueDate: this.enteredDate(),
-    });
+    // this.addTask.emit({
+    //   title: this.enteredTitle(),
+    //   summary: this.enteredSummary(),
+    //   dueDate: this.enteredDate(),
+    // });
+
+    // now that we have learnt about dependency Injection
+    // we can now use that service and inject it directly in this component
+    // so that we no longer have to emit the data
+
+    this.taskService.addTask(
+      {
+        title: this.enteredTitle(),
+        summary: this.enteredSummary(),
+        dueDate: this.enteredDate(),
+      },
+      this.userId,
+    );
+    this.onClickCancel();
   }
 }

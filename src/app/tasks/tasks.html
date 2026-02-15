@@ -3,7 +3,7 @@
   <!-- So here we are listening for cancel event -->
   <!-- As soon as that event is emitted/occurs from the add-task-template -->
   <!-- we call onToggleTaskAddForm() to close the form -->
-  <add-task (cancel)="onToggleTaskAddForm()" (addTask)="onClickAdd($event)"></add-task>
+  <add-task [userId]="getUserToDisplayId" (close)="closeTaskAddForm()"></add-task>
 }
 
 <section id="tasks">
@@ -12,7 +12,7 @@
       {{ getUserToDisplay.name }}
     </h1>
     <menu>
-      <button (click)="onToggleTaskAddForm()">Add Tasks</button>
+      <button (click)="openTaskAddForm()">Add Tasks</button>
     </menu>
   </header>
 

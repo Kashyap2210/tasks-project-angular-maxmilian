@@ -18,9 +18,17 @@ export class Tasks {
 
   isFormOpen: boolean = false;
 
-  onToggleTaskAddForm() {
-    this.isFormOpen = !this.isFormOpen;
-    console.log('this.isFormOpen', this.isFormOpen);
+  // onToggleTaskAddForm() {
+  //   this.isFormOpen = !this.isFormOpen;
+  //   console.log('this.isFormOpen', this.isFormOpen);
+  // }
+
+  openTaskAddForm() {
+    this.isFormOpen = true;
+  }
+
+  closeTaskAddForm() {
+    this.isFormOpen = false;
   }
 
   // onStartAddTask
@@ -41,6 +49,10 @@ export class Tasks {
 
   get getUserToDisplay(): IDummyUser {
     return this.userToDisplay() ?? ({} as IDummyUser);
+  }
+
+  get getUserToDisplayId(): string {
+    return this.getUserToDisplay.id;
   }
 
   get selectedUserTasks() {
