@@ -62,12 +62,12 @@ export class Tasks {
     return this.tasksService.getUserTasks(this.userToDisplay()!.id);
   }
 
-  onCompleteTask(id: string) {
-    // console.log(1);
-    // this.tasks = this.tasks.filter((task) => task.id !== id);
+  // onCompleteTask(id: string) {
+  //   // console.log(1);
+  //   // this.tasks = this.tasks.filter((task) => task.id !== id);
 
-    return this.tasksService.deleteTask(id);
-  }
+  //   return this.tasksService.deleteTask(id);
+  // }
 
   // onDeleteTask(id: string) {
   //   // console.log(2);
