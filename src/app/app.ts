@@ -1,16 +1,13 @@
 import { Component, computed, signal } from '@angular/core';
 import { DUMMY_USERS } from '../data/dummy-users';
-import { Header } from './header/header';
-import { Tasks } from './tasks/tasks';
-import { User } from './user/user';
 
 @Component({
   selector: 'app-root',
-  imports: [Header, User, Tasks],
   templateUrl: './app.html',
   styleUrl: './app.css',
+  standalone: false,
 })
-export class App {
+export class AppComponent {
   protected readonly title = signal('first-angular-app');
 
   users = DUMMY_USERS;
