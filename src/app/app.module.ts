@@ -1,12 +1,9 @@
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app';
 import { HeaderComponent } from './header/header';
 import { SharedModule } from './shared/shared.module';
-import { AddTaskComponent } from './tasks/add-task/add-task';
-import { TaskComponent } from './tasks/task/task';
-import { TasksComponent } from './tasks/tasks';
+import { TasksModule } from './tasks/tasks.module';
 import { UserComponent } from './user/user';
 
 @NgModule({
@@ -26,9 +23,9 @@ import { UserComponent } from './user/user';
     AppComponent,
     HeaderComponent,
     UserComponent,
-    TasksComponent,
-    TaskComponent,
-    AddTaskComponent,
+    // TasksComponent,
+    // TaskComponent,
+    // AddTaskComponent,
   ],
   bootstrap: [AppComponent],
   /**
@@ -43,6 +40,6 @@ import { UserComponent } from './user/user';
    * bootstrapModule, platformBrowserDynamic in main.ts
    *
    *  */
-  imports: [BrowserModule, FormsModule, SharedModule],
+  imports: [BrowserModule, SharedModule, TasksModule],
 })
 export class AppModule {}
