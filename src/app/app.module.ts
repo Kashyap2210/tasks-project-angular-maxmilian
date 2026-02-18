@@ -3,7 +3,7 @@ import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app';
 import { HeaderComponent } from './header/header';
-import { CardComponent } from './shared/card/card';
+import { SharedModule } from './shared/shared.module';
 import { AddTaskComponent } from './tasks/add-task/add-task';
 import { TaskComponent } from './tasks/task/task';
 import { TasksComponent } from './tasks/tasks';
@@ -26,7 +26,6 @@ import { UserComponent } from './user/user';
     AppComponent,
     HeaderComponent,
     UserComponent,
-    CardComponent,
     TasksComponent,
     TaskComponent,
     AddTaskComponent,
@@ -44,6 +43,6 @@ import { UserComponent } from './user/user';
    * bootstrapModule, platformBrowserDynamic in main.ts
    *
    *  */
-  imports: [BrowserModule, FormsModule],
+  imports: [BrowserModule, FormsModule, SharedModule],
 })
 export class AppModule {}
