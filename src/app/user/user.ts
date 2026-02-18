@@ -1,6 +1,5 @@
 import { Component, computed, EventEmitter, Input, input, Output } from '@angular/core';
 import { IDummyUser } from './user.model';
-import { Card } from "../shared/card/card";
 
 // const randomIndex = () => Math.floor(Math.random() * DUMMY_USERS.length);
 
@@ -43,12 +42,11 @@ import { Card } from "../shared/card/card";
 // SO to solve this issue we can define how we can pass input to the component
 @Component({
   selector: 'app-user',
-  standalone: true,
-  imports: [Card],
+  standalone: false,
   templateUrl: './user.html',
   styleUrl: './user.css',
 })
-export class User {
+export class UserComponent {
   // so we can define a decorator that can be added to properties as well
   // @Input({
   //   // here we can add configuration

@@ -1,16 +1,14 @@
-import { DatePipe } from '@angular/common';
 import { Component, inject, Input } from '@angular/core';
-import { Card } from '../../shared/card/card';
 import { TasksService } from '../tasks.service';
 import { ITask } from './task.model';
 
 @Component({
   selector: 'app-task',
-  imports: [Card, DatePipe],
   templateUrl: './task.html',
   styleUrl: './task.css',
+  standalone: false,
 })
-export class Task {
+export class TaskComponent {
   @Input({ required: true }) task!: ITask;
 
   private taskService = inject(TasksService);

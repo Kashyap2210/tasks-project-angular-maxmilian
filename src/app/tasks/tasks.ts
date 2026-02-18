@@ -1,17 +1,15 @@
 import { Component, input } from '@angular/core';
 import { IDummyUser } from '../user/user.model';
-import { AddTask } from './add-task/add-task';
-import { Task } from './task/task';
 import { ITaskCreateDto } from './task/task.model';
 import { TasksService } from './tasks.service';
 
 @Component({
   selector: 'app-tasks',
-  imports: [Task, AddTask],
   templateUrl: './tasks.html',
   styleUrl: './tasks.css',
+  standalone: false,
 })
-export class Tasks {
+export class TasksComponent {
   constructor(private readonly tasksService: TasksService) {}
 
   userToDisplay = input<IDummyUser>();

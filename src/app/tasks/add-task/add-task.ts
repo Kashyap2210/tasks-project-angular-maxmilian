@@ -1,14 +1,13 @@
 import { Component, EventEmitter, inject, Input, Output, signal } from '@angular/core';
-import { FormsModule } from '@angular/forms';
 import { TasksService } from '../tasks.service';
 
 @Component({
   selector: 'add-task',
-  imports: [FormsModule],
   templateUrl: './add-task.html',
   styleUrl: './add-task.css',
+  standalone: false,
 })
-export class AddTask {
+export class AddTaskComponent {
   // now we will inject the TasksService directly in it
   private taskService = inject(TasksService);
   @Input({ required: true }) userId!: string;
